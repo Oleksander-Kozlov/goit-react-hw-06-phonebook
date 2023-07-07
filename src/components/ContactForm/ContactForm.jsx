@@ -1,5 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState } from 'react'; 
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/actions';
+
 
 import {
   ContactFormStyle,
@@ -10,7 +13,8 @@ import {
 import PropTypes from 'prop-types';
 
 
-export const ContactForm = ({createContacts}) => {
+export const ContactForm = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState(' ');
   const [number, setNumber] = useState(' ');
   //стейт для данних ім"я та номеру
@@ -32,10 +36,7 @@ export const ContactForm = ({createContacts}) => {
     // Cкидую налаштування
     e.preventDefault();
     // Записую значення з імпуту до об"єкту
-    createContacts({
-      name: name,
-      number: number,
-    });
+    dispatch(addContact({ name, number }));
     // Оновлюю інпут
     setName('');
     setNumber('');
