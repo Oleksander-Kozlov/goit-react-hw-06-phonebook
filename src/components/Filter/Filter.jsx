@@ -1,18 +1,19 @@
+import { filter } from 'redux/filtersSlise.js';
 import { Input, Label } from '../ContactForm/ContactForm.styled.js';
 // import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { filterContact } from '../../redux/actions';
+import { useState } from 'react';
 
-export const Filter = ({ value }) => {
+export const Filter = () => {
   const dispatch = useDispatch();
 
-    function handleFind (e) {
-     
-      
-      dispatch(filterContact(e.target.value));
-  };
-  
-  
+  const [filterok, setFilter] = useState('');
+
+  const handleFind=(e)=> {
+    setFilter(e.target.value);
+    
+  }
+dispatch(filter(filterok));
   return (
     <div>
       <Label htmlFor="">
@@ -20,8 +21,8 @@ export const Filter = ({ value }) => {
         <Input
           name="filter"
           type="text"
-          value={value}
-          onChange={(handleFind)}
+          value={filterok}
+          onChange={handleFind}
         />
       </Label>
     </div>

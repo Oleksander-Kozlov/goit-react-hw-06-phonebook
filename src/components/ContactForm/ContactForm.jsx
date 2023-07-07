@@ -1,9 +1,6 @@
 import React from 'react';
-import { useState } from 'react'; 
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/actions';
-
-
 import {
   ContactFormStyle,
   Input,
@@ -11,7 +8,7 @@ import {
   ButtonAddContacts,
 } from '../ContactForm/ContactForm.styled.js';
 import PropTypes from 'prop-types';
-
+import { addContact } from 'redux/contactsSlise.js';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -36,7 +33,7 @@ export const ContactForm = () => {
     // Cкидую налаштування
     e.preventDefault();
     // Записую значення з імпуту до об"єкту
-    dispatch(addContact({ name, number }));
+    dispatch(addContact( name, number ));
     // Оновлюю інпут
     setName('');
     setNumber('');
@@ -75,6 +72,5 @@ export const ContactForm = () => {
 };
 
 ContactForm.propTypes = {
-  
   children: PropTypes.node,
-}
+};

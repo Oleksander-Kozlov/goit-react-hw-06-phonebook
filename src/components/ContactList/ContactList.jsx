@@ -3,7 +3,8 @@ import { List } from '../ContactList/ContactList.styled.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { ButtonDelete, CotactItem } from './Contact.styled.js';
-import { deleteContact } from 'redux/actions.js';
+import { deleteContact } from 'redux/contactsSlise.js';
+// import { deleteContact } from 'redux/actions.js';
 // import PropTypes from 'prop-types';
 // import { useSelector } from 'react-redux/es/hooks/useSelector.js';
 // const BASEContact = [{ id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -11,7 +12,7 @@ import { deleteContact } from 'redux/actions.js';
 //     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
 //     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },]
 export const ContactList = () => {
-  const filters = useSelector(state => state.filters.input);
+  const filters = useSelector(state => state.filters);
   const contacts = useSelector(state => state.contacts);
   localStorage.setItem('user-contact', JSON.stringify(contacts));
   console.log('contacts', contacts);
