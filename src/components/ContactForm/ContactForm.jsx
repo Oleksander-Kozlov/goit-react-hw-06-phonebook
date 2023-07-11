@@ -33,6 +33,7 @@ export const ContactForm = () => {
     // Cкидую налаштування
     e.preventDefault();
     // Записую значення з імпуту до об"єкту
+    
     dispatch(addContact( name, number ));
     // Оновлюю інпут
     setName('');
