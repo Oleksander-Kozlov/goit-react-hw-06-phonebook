@@ -8,12 +8,12 @@ const initialState = JSON.parse(localStorage.getItem('user-contact')) || [
 export const contactsReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'contacts/addContact':
-      const haveNameInPhonebook = state.some(
-        ({ name }) => name.toLowerCase() === action.payload.name.toLowerCase()
-      );
-      if (haveNameInPhonebook) {
-        return alert(`${action.payload.name} is already in contacts`);
-      }
+      // const haveNameInPhonebook = state.some(
+      //   ({ name }) => name.toLowerCase() === action.payload.name.toLowerCase()
+      // );
+      // if (haveNameInPhonebook) {
+      //   return alert(`${action.payload.name} is already in contacts`);
+      // }
       const updatePhonebook = [...state, action.payload];
       localStorage.setItem('user-contact', JSON.stringify(updatePhonebook));
       return updatePhonebook;

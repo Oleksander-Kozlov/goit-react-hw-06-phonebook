@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import {
+  useDispatch,
+  // useSelector
+} from 'react-redux';
 import {
   ContactFormStyle,
   Input,
@@ -15,7 +18,7 @@ export const ContactForm = () => {
   const [name, setName] = useState(' ');
   const [number, setNumber] = useState(' ');
   //стейт для данних ім"я та номеру
-
+// const contactsStore = useSelector()
   // state = {
   //   name: '',
   //   number: '',
@@ -33,7 +36,16 @@ export const ContactForm = () => {
     // Cкидую налаштування
     e.preventDefault();
     // Записую значення з імпуту до об"єкту
-    
+    console.log('e.currentTarget', e.currentTarget.name.value);
+          const haveNameInPhonebook = JSON.parse(
+            localStorage.getItem('user-contact')
+          ).some(
+            ({ name }) =>
+              name.toLowerCase() === e.currentTarget.name.value.toLowerCase()
+          );
+if (haveNameInPhonebook) {
+  return alert(`${e.currentTarget.name.value} is already in contacts`);
+}
     dispatch(addContact( name, number ));
     // Оновлюю інпут
     setName('');
